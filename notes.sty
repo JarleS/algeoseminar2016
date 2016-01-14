@@ -1,0 +1,141 @@
+\ProvidesPackage{notes}
+
+
+%% Font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage[scaled]{beramono}
+\RequirePackage{calligra}
+\renewcommand{\sfdefault}{phv}
+\RequirePackage{sectsty}
+\allsectionsfont{\sffamily}
+\RequirePackage{microtype}
+
+
+%% Mathematics
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{thmtools}
+\RequirePackage{mathtools}
+\RequirePackage{mathrsfs}
+
+
+%% Miscellanous
+\RequirePackage{graphicx}
+\RequirePackage{subcaption}
+\RequirePackage{babel}
+\RequirePackage{csquotes}
+\RequirePackage{textcomp}
+\RequirePackage{booktabs}
+\RequirePackage{listings}
+\lstset{basicstyle = \ttfamily, frame = single}
+\RequirePackage{epigraph}
+\usepackage[color = uiogrey, bordercolor = uiogrey]{todonotes}
+\RequirePackage{xspace}
+\RequirePackage{tikz}
+\RequirePackage{tikz-cd}
+\RequirePackage{url}
+\urlstyle{sf}
+
+
+%% Bibliography
+\RequirePackage[backend = bibtex, style = alphabetic, bibstyle = alphabetic]{biblatex}
+\addbibresource{bibliography.bib}
+
+
+%% Cross references
+\RequirePackage{varioref}
+\usepackage[colorlinks, 
+            linkcolor     = harvardcrimson, 
+            citecolor     = darkorange,
+            urlcolor      = frenchblue, 
+            linktoc       = all, 
+            hypertexnames = false]
+            {hyperref}
+\RequirePackage[nameinlink, capitalize, noabbrev]{cleveref}
+\RequirePackage{autonum}
+\autonum@generatePatchedReference{vref}
+\RequirePackage{showlabels}
+
+
+\declaretheorem[style = plain, numberwithin = section]{theorem}
+\declaretheorem[style = plain,      sibling = theorem]{corollary}
+\declaretheorem[style = plain,      sibling = theorem]{lemma}
+\declaretheorem[style = plain,      sibling = theorem]{proposition}
+\declaretheorem[style = plain,      sibling = theorem]{observation}
+\declaretheorem[style = definition, sibling = theorem, 
+                qed   = $\spadesuit$]{definition}
+\declaretheorem[style = definition, sibling = theorem,
+                qed   = $\heartsuit$]{example}
+\declaretheorem[style = remark,    numbered = no,
+                qed   = $\diamondsuit$]{remark}
+\declaretheorem[style = definition]{exercise}
+\declaretheorem[style = remark, numbered = no,
+                qed   = $\blacksquare$]{solution}
+
+
+
+\DeclarePairedDelimiter{\p}{\lparen}{\rparen}  % Parenthesis
+\DeclarePairedDelimiter{\set}{\{}{\}}          % Set
+\DeclarePairedDelimiter{\abs}{|}{|}            % Absolute value
+\DeclarePairedDelimiter{\norm}{\|}{\|}         % Norm
+
+
+
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\sheafHom}%
+{\mathscr{H}\text{\kern -5.2pt {\calligra\large om}}\,} % Hjelp!
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\PP}{\mathbb{P}}
+
+
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\EE}{\mathscr{E}}
+\newcommand{\FF}{\mathscr{F}}
+\newcommand{\GG}{\mathscr{G}}
+\newcommand{\HH}{\mathscr{H}}
+
+
+\renewcommand{\a}{\mathbf{a}}
+\renewcommand{\b}{\mathbf{b}}
+\renewcommand{\c}{\mathbf{c}}
+\renewcommand{\v}{\mathbf{v}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\1}{\mathbf{1}}
+
+
+\newcommand{\egg}
+{
+    \def\eggheight{1ex}
+    \tikz
+    {
+    \path[preaction  = {fill = orange!50!white},
+          ball color = orange!60!gray, fill opacity = 0.5]
+        plot[domain  = -pi : pi, samples = 100]
+        (
+            {0.78 * \eggheight * cos(\x/4 r) * sin(\x r)},
+            {-\eggheight * (cos(\x r))}
+        )
+        -- cycle;
+    }%
+}
+
+
+\renewcommand{\qedsymbol}{\egg}
+
+
+\definecolor{uiogrey}{cmyk}{0, 0.05, 0.1, 0.29}
+\definecolor{uiored}{cmyk}{0, 1, 1, 0}
+\definecolor{darkorange}{rgb}{1.0, 0.55, 0.0}
+\definecolor{frenchblue}{rgb}{0.0, 0.45, 0.73}
+\definecolor{harvardcrimson}{rgb}{0.79, 0.0, 0.09}
