@@ -1,0 +1,53 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.4 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{anyt}{anyt}
+    \entry{Huy06}{book}{}
+      \name{labelname}{1}{}{%
+        {{hash=442ab7510d1bd982854652260a311d76}{Huybrechts}{H\bibinitperiod}{D.}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=442ab7510d1bd982854652260a311d76}{Huybrechts}{H\bibinitperiod}{D.}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {The Clarendon Press, Oxford University Press, Oxford}%
+      }
+      \strng{namehash}{442ab7510d1bd982854652260a311d76}
+      \strng{fullhash}{442ab7510d1bd982854652260a311d76}
+      \field{labelalpha}{Huy06}
+      \field{sortinit}{H}
+      \field{sortinithash}{95b2cb08933fe649b7e9f8beee2132b4}
+      \field{labeltitle}{Fourier-{M}ukai transforms in algebraic geometry}
+      \field{isbn}{978-0-19-929686-6; 0-19-929686-3}
+      \field{series}{Oxford Mathematical Monographs}
+      \field{title}{Fourier-{M}ukai transforms in algebraic geometry}
+      \field{year}{2006}
+      \field{pages}{viii+307}
+      \verb{doi}
+      \verb 10.1093/acprof:oso/9780199296866.001.0001
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1093/acprof:oso/9780199296866.001.0001
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

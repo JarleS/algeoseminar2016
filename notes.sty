@@ -40,7 +40,7 @@
 
 
 %% Bibliography
-\RequirePackage[backend = bibtex, style = alphabetic, bibstyle = alphabetic]{biblatex}
+\RequirePackage[backend = biber, style = alphabetic]{biblatex}
 \addbibresource{bibliography.bib}
 
 
@@ -75,18 +75,37 @@
                 qed   = $\blacksquare$]{solution}
 
 
-
 \DeclarePairedDelimiter{\p}{\lparen}{\rparen}  % Parenthesis
 \DeclarePairedDelimiter{\set}{\{}{\}}          % Set
 \DeclarePairedDelimiter{\abs}{|}{|}            % Absolute value
 \DeclarePairedDelimiter{\norm}{\|}{\|}         % Norm
 
 
-
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\sheafHom}%
-{\mathscr{H}\text{\kern -5.2pt {\calligra\large om}}\,} % Hjelp!
+\DeclareMathOperator{\sheafHom}
+{\mathscr{H}\text{\kern -5.2pt {\calligra\large om}}\,}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Sq}{Sq}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\In}{In}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Th}{Th}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\Tot}{Tot}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\holim}{holim}
+\DeclareMathOperator{\hocolim}{hocolim}
+\DeclareMathOperator{\hofib}{hofib}
+\DeclareMathOperator{\hocofib}{hocofib}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Cone}{Cone}
+
 
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
@@ -114,13 +133,18 @@
 \newcommand{\1}{\mathbf{1}}
 
 
+\newcommand{\iso}{\cong}
+\newcommand{\tensor}{\otimes}
+\renewcommand{\smash}{\wedge}
+
+
 \newcommand{\egg}
 {
     \def\eggheight{1ex}
     \tikz
     {
-    \path[preaction  = {fill = orange!50!white},
-          ball color = orange!60!gray, fill opacity = 0.5]
+        \path[preaction  = {fill = orange!50!white},
+        ball color = orange!60!gray, fill opacity = 0.5]
         plot[domain  = -pi : pi, samples = 100]
         (
             {0.78 * \eggheight * cos(\x/4 r) * sin(\x r)},
