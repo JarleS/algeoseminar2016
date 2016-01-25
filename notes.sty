@@ -1,3 +1,6 @@
+\NeedsTeXFormat{LaTeX2e}[1994/12/01]
+
+
 \ProvidesPackage{notes}
 
 
@@ -77,7 +80,7 @@
 
 \DeclarePairedDelimiter{\p}{\lparen}{\rparen}  % Parenthesis
 \DeclarePairedDelimiter{\set}{\{}{\}}          % Set
-\DeclarePairedDelimiter{\abs}{|}{|}            % Absolute value
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}  % Absolute value
 \DeclarePairedDelimiter{\norm}{\|}{\|}         % Norm
 
 
@@ -135,7 +138,7 @@
 
 \newcommand{\iso}{\cong}
 \newcommand{\tensor}{\otimes}
-\renewcommand{\smash}{\wedge}
+%\renewcommand{\smash}{\wedge}
 
 
 \newcommand{\egg}
@@ -163,3 +166,5 @@
 \definecolor{darkorange}{rgb}{1.0, 0.55, 0.0}
 \definecolor{frenchblue}{rgb}{0.0, 0.45, 0.73}
 \definecolor{harvardcrimson}{rgb}{0.79, 0.0, 0.09}
+
+\endinput
