@@ -1,6 +1,3 @@
-\NeedsTeXFormat{LaTeX2e}[1994/12/01]
-
-
 \ProvidesPackage{notes}
 
 
@@ -19,6 +16,7 @@
 %% Mathematics
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
+\RequirePackage{amsmath}
 \RequirePackage{thmtools}
 \RequirePackage{mathtools}
 \RequirePackage{mathrsfs}
@@ -80,7 +78,7 @@
 
 \DeclarePairedDelimiter{\p}{\lparen}{\rparen}  % Parenthesis
 \DeclarePairedDelimiter{\set}{\{}{\}}          % Set
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}  % Absolute value
+\DeclarePairedDelimiter{\abs}{|}{|}            % Absolute value
 \DeclarePairedDelimiter{\norm}{\|}{\|}         % Norm
 
 
@@ -91,6 +89,7 @@
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\Sq}{Sq}
 \DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Tor}{Tor}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\In}{In}
@@ -108,7 +107,8 @@
 \DeclareMathOperator{\hocofib}{hocofib}
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\Cone}{Cone}
-
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Kom}{Kom}
 
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
@@ -120,6 +120,7 @@
 
 
 \newcommand{\OO}{\mathcal{O}}
+\newcommand{\AAA}{\mathcal{A}}
 \newcommand{\EE}{\mathscr{E}}
 \newcommand{\FF}{\mathscr{F}}
 \newcommand{\GG}{\mathscr{G}}
@@ -138,7 +139,7 @@
 
 \newcommand{\iso}{\cong}
 \newcommand{\tensor}{\otimes}
-%\renewcommand{\smash}{\wedge}
+% \renewcommand{\smash}{\wedge}
 
 
 \newcommand{\egg}
@@ -166,5 +167,3 @@
 \definecolor{darkorange}{rgb}{1.0, 0.55, 0.0}
 \definecolor{frenchblue}{rgb}{0.0, 0.45, 0.73}
 \definecolor{harvardcrimson}{rgb}{0.79, 0.0, 0.09}
-
-\endinput

@@ -17,8 +17,8 @@
     Jonas Kylling
 %    \and
 %    Fredrik Meyer
-    \and 
-    Bernt Ivar N\o dland
+    \and
+    Bernt Ivar Utst\o l N\o dland
 %    \and
 %    Jarle Stavnes
 }
@@ -29,12 +29,213 @@
     \maketitle
 \end{titlepage}
 
-\[
+\chapter{Lecture 1}
+
+\section{Motivation}
+
+Let $\mathcal{A}$ be an abelian category (generally this will either be $R$-mod for a commutative ring $R$ or $Q-Coh_X$ or $\OO_X$-mod for a scheme $X$). Loosely speaking, the phisosophy of derived categories is the following: Before doing anything to an object, first pass to a projective/injective resolution of the object. Thus the derived category of an object is the ``correct'' category for doing homological algebra and derived functors on it.
+
+Derived categories are also an algebraic analogy to homotopy-categories for topological spaces.
+
+\begin{example}
+If $\mathcal{F}$ is a coherent sheaf on a scheme $X$ there exists a length $\dim X$ resolution of $\mathcal{F}$ by locally free sheaves, that is there is an exact sequence
+\[ 0 \to \mathcal{E}_n \to \mathcal{E}_{n-1} \to \cdots \to \mathcal{E}_0 \to \mathcal{F} \to 0 \]
+where each $\mathcal{E}_i$ is a locally free sheaf on $X$. Thus studying coherent sheaves on $X$ is equivalent to studying complexes of locally free sheaves on $X$.
+\end{example}
+
+\section{Some homological algebra}
+
+We here recall some (hopefully) well-known results and definitions from homological algebra which we will need.
+
+The category $\Kom(\AAA)$ has objects cochain complexes, meaning complexes $ \cdots \to A^i \xrightarrow{d^i} A^{i+1} \to \cdots$  with $d^{i+1} \circ d^i = 0$. A morphism  $X \to Y$ is a collection of maps $f^n: X^n \to Y^n$ which commute with the differentials.
+
+We have the following list of properties/defintions:
+\begin{enumerate}
+\item $\Kom(\AAA)$ is an abelian category.
+\item There exists functors $H^i: \Kom(\AAA) \to \AAA$ given by taking cohomology of an object.
+\item If $f:X \to Y$, we define $f$ to be a quasi-isomorphism if $H^i(f)$ is an isomorphism for all $i$.
+\item There exists shift-functors $[n]: \Kom(\AAA) \to \Kom(\AAA)$, we write $X[n]$ for the object $[n](X)$, defined by $X[n]^i=X^{i-n}$ and $d_{X[n]}^i = (-1)^n d_X^{i-n}$.
+\item Two morphisms $f,g: X \to Y$ are defined to be chain-homotopic (we write $f \simeq g$) if there exists a collection of functions $S^n:X^n \to Y^{n-1}$ such that $f^n-g^n=S^{n+1} \circ d^n + d^{n-1} \circ S^n$.
+\item Chain-homotopy is an equivalence relation which respects $+$ and composition.
+\item $f \simeq g$ implies that $H^i(f)=H^i(g)$ for all $i$.
+\item $f:X \to Y$ is defined to be a chain-homotopy-equivalence if there exists a $g: Y \to X$ such that $f \circ g \simeq id$ and $g \circ f \simeq id$.
+\item Given $f: X \to Y$ there exists an object $\Cone(f)$ in $\Kom(\AAA)$ defined as follows: $\Cone(f)^n = X^{n+1} \oplus Y^n$, $d^n = \begin{bmatrix} -d_X^{n+1} & 0 \\ -f^{n+1} & d_Y^n \end{bmatrix}$.
+\item There is a short exact sequence $0 \to Y \to \Cone(f) \to X[-1] \to 0$ given by the inclusion $Y^n \to \Cone(f)^n$ and the projection $\Cone(f)^n \to X[-1]^n$.
+\item The sequence above induces a long exact sequence in cohomology, and by using $H^i(X[-1])=H^{i+1}(X)$ we get a long exact sequence
+\[ \cdots \to H^i(X) \to H^i(Y) \to H^i(\Cone(f)) \to H^{i+1}(X) \to \dots \]
+Then the connecting homomorphism $H^i(X[-1])=H^{i+1} \to H^{i+1}(Y)$ is exactly $H^{i+1}(f)$.
+\end{enumerate}
+
+\section{Derived categories}
+
+Informally we want the derived category $D(\AAA)$ to be $\Kom(\AAA)$ with quasi-isomorphisms inverted. The way we will do this is by localizing the category at $Q$, where $Q$ is the set of quasi-isomorphisms. Details of this construction will be done in the next lecture.
+
+The objects of $D(\AAA)$ is defined to be the objects of $\Kom(\AAA)$, while a morphim from $X \to Y$ is an equivalence class of diagrams of the form
+\[ X \xleftarrow{f} X_1 \xrightarrow{g} Y \]
+where $X_1$ is some object and $f$ is a quasi-isomorphism. We call this the fraction $gf^{-1}$.
+
+Two such diagrams $ X \xleftarrow{f} X_1 \xrightarrow{g} Y$ and $ X \xleftarrow{f'} X_2 \xrightarrow{g'} Y$ are said to be equivalent if there exists a third diagram $ X \xleftarrow{f''} X_3 \xrightarrow{g''} Y$ such that the diagram commutes:
+
+
+
+ \begin{tikzcd}
+\text{ } & X_2 \arrow{dl} \arrow{dr} & \\
+X  & X_3 \arrow{l} \arrow{r} \arrow{u} \arrow{d} & Y \\
+\text{ } & X_1 \arrow{ul} \arrow{ur} & 
+\end{tikzcd} 
+
+
+
+To construct $D(\AAA)$ we will first go to another category $K(\AAA)$ defined as follows: The objects are the objects of $\Kom(\AAA)$ while $\Hom_{K(\AAA)}(X,Y) = \Hom_{\Kom(\AAA)}(X,Y) / \simeq$ (where the equivalence relation is chain-homotopy as defined above). We will check that this is a triangulated category and that it satisfies some desireable properties, before using this to construct $D(\AAA)$.
+
+We will want the functor $Q: \Kom(\AAA) \to D(\AAA)$ to satisfy the following universal property: Assume we have a functor $F: \Kom (\AAA) \to D$ which sends quasi-isomorphisms to isomorphisms. Then there exists a unique functor $\widetilde{F}: D(\AAA) \to D$ such that we have an isomorphism of functors $\widetilde{F} \circ Q \simeq F$:
+
 \begin{tikzcd}
-  A \arrow[rd] \arrow [r, "\phi"] & B \\
-  & C
+\Kom(\AAA) \ar{d}{Q} \ar{dr}{F} & \text{ } \\
+D(\AAA) \arrow[dashed]{r}{\exists ! \widetilde{F}} & D
 \end{tikzcd}
-\]
+
+\section{Triangulated categories}
+
+A (pre)triangulated category consists of a pair $(K,T)$ where $K$ is an additive category and $T$ is an automorphism together with a collection of exact triangles of the form $A \to B \to C \to TA$ satisfying the  (5) 6 axioms below.
+
+A morphism of triangles is defined as a commutative diagram of the form:
+
+ \begin{tikzcd}
+A \ar{d} \ar{r} & B \ar{d} \ar{r} & C \ar{d} \ar{r} & \ar{d} TA \\
+A' \ar{r} & B' \ar{r} & C' \ar{r} & TA' 
+\end{tikzcd} 
+\begin{enumerate}
+\item Any morphism is part of an exact triangle
+\item $A \xrightarrow{id} A \to 0 \to TA$ is exact.
+\item Any triangle isomorphic to an exact triangle is exact.
+\item Consider the diagram $T^{-1}C \xrightarrow{T^{-1}w} A \xrightarrow{u} B \xrightarrow{v} C \xrightarrow{w} TA \xrightarrow{Tu} TB$. If $(u,v,w)$ is exact then $(v,w,v-Tu)$ and $(-T^{-1}w,u,v)$ are exact.
+\item  Given maps $A \to A'$, $B \to B'$ such that the diagram commutes:
+
+\begin{tikzcd}
+A \ar{d} \ar{r} & B \ar{d} \ar{r} & C  \ar{r} & \ar{d} TA \\
+A' \ar{r} & B' \ar{r} & C' \ar{r} & TA' 
+\end{tikzcd}
+
+Then there exists an (not necessarily unique) arrow $C \to C'$ such that the diagram commutes:
+
+\begin{tikzcd}
+A \ar{d} \ar{r} & B \ar{d} \ar{r} & C \arrow[dashed]{d} \ar{r} & \ar{d} TA \\
+A' \ar{r} & B' \ar{r} & C' \ar{r} & TA' 
+\end{tikzcd} 
+\item This is called the octahedron axiom and is a pain to write out and will almost never be used, thus we skip it.
+\end{enumerate}
+
+In our setting of $Kom(\AAA)$ or $D(\AAA)$ an exact triangle is any triangle isomorphic to a triangle of the form $X \to Y \to \Cone(f) \to X[-1]$.
+\begin{proposition}
+$Kom(\AAA)$ is a  triangulated category.
+\end{proposition}
+
+\begin{proof}
+Axiom 1 follows by construction of the mapping cone.
+
+$\Cone(\id) \simeq 0$, thus we have axiom 2.
+
+Axiom 3 follows by definition of triangles in our categrory.
+
+Axiom 5 is true since the cone construction is functorial.
+
+Axiom 4 requires a little work:
+
+Assume  $X \to Y \to \Cone(f) \to X[-1]$ is an exact triangle. We must show that  $Y \xrightarrow{v} \Cone(f) \to X[-1] \to Y[-1]$ is an exact triangle. We will construct an explicit isomorphism $X[-1] \simeq \Cone(v)$ giving an isomorphism of triangles:
+\begin{tikzcd}
+Y \ar{d} \ar{r} & \Cone(f) \ar{d} \ar{r} & X[-1] \arrow{d} \ar{r} & \ar{d} Y[-1] \\
+Y' \ar{r} & \Cone(f) \ar{r} & \Cone(v) \ar{r} & Y[-1] 
+\end{tikzcd} 
+
+We have that $\Cone(v)^n = Y^{n+1} \oplus \Cone(f)^n = Y^{n+1} \oplus X^{n+1} \oplus Y^n$ with differential 
+\[ d^n = \begin{bmatrix} -d_Y^{n+1} & 0 \\ -v^{n+1} & d_{\Cone(f)}^n \end{bmatrix}=\begin{bmatrix} -d_Y^{n+1} & 0 &  0 \\ 0 & -d_X^{n+1} & 0 \\ -id_Y & -f^{n+1} & d_Y^n \end{bmatrix} \]
+We define maps $ X[-1] \xrightarrow{g} \Cone(v) \xrightarrow{h} X[-1]$ by
+\[ X^{n+1} \xrightarrow{g^n}   Y^{n+1} \oplus X^{n+1} \oplus Y^n \]
+\[ x \mapsto (-f^{n+1}(x),x,0) \]
+\[ Y^{n+1} \oplus X^{n+1} \oplus Y^n \xrightarrow{h^n}   X^{n+1}  \]
+\[ (y,x,z) \mapsto x \]
+Then $h \circ g = id$ and $g \circ h$ are homotopic to the identity via the map
+\[ S^n: Y^{n+1} \oplus X^{n+1} \oplus Y^n \to Y^n \oplus X^n \oplus Y^{n+1} \]
+\[ (y,x,z) \mapsto (z,0,0) \]
+Thus we are done.
+\end{proof}
+
+Next we will see some useful properties of triangulated categories.
+
+\begin{proposition} \label{compzero}
+Assume $X \xrightarrow{u}  Y \xrightarrow{v} Z \xrightarrow{w} TX$ is an exact triangle. Then $v \circ u = 0$.
+\end{proposition}
+\begin{proof}
+Applying axiom 5 to the following diagram:
+
+\begin{tikzcd}
+X  \ar{r}{u} & Y  \ar{r}{v} & Z  \ar{r}{w} &  TX \\
+X \ar{u}{id} \ar{r}{id} & X \ar{u}{u} \ar{r} & 0 \ar{r} & \ar{u} TX 
+\end{tikzcd}
+
+yields a morphism $0 \to Z$ such that $v \circ u = 0$.
+\end{proof}
+
+\begin{proposition}[5-lemma]
+Assume we have a commutative diagram
+
+\begin{tikzcd}
+X \ar{d}{\simeq} \ar{r} & Y \ar{d}{\simeq} \ar{r} & Z \arrow[dashed]{d}{ \exists h} \ar{r} & \ar{d}{\simeq} TX \\
+X' \ar{r} & Y' \ar{r} & Z' \ar{r} & TX' 
+\end{tikzcd} 
+
+where the vertical arrows are isomorphisms. Then  the moprhism $h$ induced by axiom 4 is also an isomorphism.
+\end{proposition}
+\begin{proof}
+We reduce to the case where the vertical arrows are identities:
+
+\begin{tikzcd}
+X \ar{d}{id} \ar{r}{u} & Y \ar{d}{id} \ar{r}{v} & Z \arrow[dashed]{d}{ \exists h} \ar{r} & \ar{d}{id} TX \\
+X \ar{r}{u} & Y \ar{r}{v} & Z \ar{r} & TX 
+\end{tikzcd} 
+
+We wish to show that $h$ is an isomorphism by showing that it is surjective and injective. To check that $h$ is surjective it suffices to show that for any $f: Z \to D$ such that $f \circ h = 0$, we have $f=0$.
+
+From the diagram we have that $h \circ v=v$ which implies that $0=f \circ h \circ v=f \circ v$. This means we have a commutative diagram:
+
+\begin{tikzcd}
+X \ar{d}{id} \ar{r}{u} & Y \ar{d}{id} \ar{r}{v} & Z \arrow{d}{ h} \ar{r} & \ar{d}{id} TX \\
+X \ar{r}{u} & Y \ar{r}{v} \ar{d} & Z \ar{r} \ar{d}{f} & TX \\
+\text{ } & 0 \ar{r} & D \ar{r}{id} & D
+\end{tikzcd} 
+
+By axiom 5 there exists a $g: TX \to D$ such that $f= g \circ w$. But then $0=f \circ h = g \circ w \circ h = g \circ w = f$. Thus $h$ is surjective. Checking that $h$ is injective is by a similar argument.
+
+\end{proof}
+
+\begin{definition}
+A cohomological functor $f:K \to \AAA$ from a triangulated category $K$ to an abelian category  $\AAA$  is a functor which takes exact triangles to long exact sequences, that is any exact triangle $X \to Y \to Z \to TX$ induces a long exact sequence
+\[ \cdots \to FT^iX \to FT^iY \to FT^iZ \to FT^{i+1}X \to \cdots \]
+For short we write $F^iX$ for $FT^iX$.
+\end{definition}
+
+\begin{lemma}
+$\Hom(A,-)$ and $\Hom(-,A)$ are cohomological functors.
+\end{lemma}
+\begin{proof}
+Assume we have an exact triangle $X \xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} TX$. After applying $\Hom(A,-)$ we get maps
+\[ \cdots \to \Hom(A,X) \xrightarrow{u^\ast} \Hom(A,Y) \xrightarrow{v^\ast} \Hom(A,Z) \to \cdots \]
+We will check that this is exact at $\Hom(A,Y)$, then the general case follows from the propoerties of triangulated categories.
+
+Since $v \circ u = 0$ by \ref{compzero} we have that $\im u^\ast \subset \ker v^\ast$.
+
+Assume now that $f \in \Hom(A,Y)$ such that $v^\ast(f) = f \circ v = 0$. Thus we have a commutative diagram:
+
+\begin{tikzcd}
+A  \ar{r}{id} & A \ar{d}{f} \ar{r} & 0 \arrow{d} \ar{r} &  TA \\
+X \ar{r}{u} & Y \ar{r}{v} & Z \ar{r} & TX 
+\end{tikzcd} 
+
+By axiom 5 there exists a $g: A \to X$ such that $u \circ g = u^\ast (g) = f$. 
+
+The proof for $\Hom(-,A)$ is similar.
+\end{proof}
 
 \clearpage
 \printbibliography
