@@ -38,7 +38,7 @@ Let $\mathcal{A}$ be an abelian category (generally this will either be $R$-mod 
 Derived categories are also an algebraic analogy to homotopy-categories for topological spaces.
 
 \begin{example}
-	\todo[noline]{Lag kommandoer for $\mathcal{E}$ og $\mathcal{F}$.}
+    \todo[noline]{Lag kommandoer for $\mathcal{E}$ og $\mathcal{F}$.}
     If $\mathcal{F}$ is a coherent sheaf on a scheme $X$ there exists a length $\dim X$ resolution of $\mathcal{F}$ by locally free sheaves, that is there is an exact sequence
     \[
     \begin{tikzcd}
@@ -55,8 +55,8 @@ We here recall some (hopefully) well-known results and definitions from homo\-lo
 The category $\Kom(\AAA)$ has objects cochain complexes, meaning complexes 
 \[
     \begin{tikzcd}
-		\cdots \arrow[r] & A^i \arrow[r, "d^i"] & A^{i+1} \arrow[r] & \cdots
-	\end{tikzcd}
+        \cdots \arrow[r] & A^i \arrow[r, "d^i"] & A^{i+1} \arrow[r] & \cdots
+    \end{tikzcd}
 \]
 with $d^{i+1} \circ d^i = 0$. A morphism  $X \to Y$ is a collection of maps $f^n \colon X^n \to Y^n$ which commute with the differentials.
 
@@ -114,11 +114,11 @@ where $X_1$ is some object and $s$ is a quasi-isomorphism. We call this a (left)
 
 Two such diagrams $\begin{tikzcd}X & \arrow[l, "s", swap] X_1 \arrow[r, "f"] & Y \end{tikzcd}$ and $\begin{tikzcd}X & \arrow[l, "s'", swap] X_2 \arrow[r, "f'"] & Y \end{tikzcd}$ are said to be equivalent if there exists a third fraction $\begin{tikzcd}X & \arrow[l, "s''", swap] X_3 \arrow[r, "f''"] & Y \end{tikzcd}$, and maps $X_3 \to X_1$ and $X_3 \to X_2$, such that the diagram commutes:
 \[
-\begin{tikzcd}
-  &    X_2 \arrow{dl} \arrow{dr} & \\
-  X  & X_3 \arrow{l}  \arrow{r}  \arrow{u} \arrow{d} & Y \\
-  &    X_1 \arrow{ul} \arrow{ur} & 
-\end{tikzcd} 
+    \begin{tikzcd}
+        &    X_2 \arrow{dl} \arrow{dr} & \\
+        X  & X_3 \arrow{l}  \arrow{r}  \arrow{u} \arrow{d} & Y \\
+        &    X_1 \arrow{ul} \arrow{ur} & 
+    \end{tikzcd} 
 \]
 More formally the derived category of $\AAA$ is a category $D(\AAA)$ and a functor $Q \colon \Kom(\AAA) \to D(\AAA)$ which maps quasi-isomorphisms to isomorphisms, with the following universal property: Assume we have a functor $F \colon \Kom (\AAA) \to D$ which sends quasi-isomorphisms to isomorphisms. Then there exists a unique functor $\widetilde{F} \colon D(\AAA) \to D$ such that we get a commutative diagram
 \[
@@ -173,7 +173,7 @@ A morphism of triangles $(u, v, w) \to (u', v', w')$ is defined as a commutative
             A' \ar{r} & B' \ar{r} & C' \ar{r} & TA' 
         \end{tikzcd}
     \]
-Then there exists an (not necessarily unique) arrow $C \to C'$ such that the diagram commutes:
+    Then there exists an (not necessarily unique) arrow $C \to C'$ such that the diagram commutes:
     \[
         \begin{tikzcd}
             A \ar{d} \ar{r} & B \ar{d} \ar{r} & C \arrow[dashed]{d} \ar{r} & \ar{d} TA \\
@@ -191,7 +191,7 @@ In our setting of $Kom(\AAA)$ or $D(\AAA)$ an exact triangle is any triangle iso
 \end{proposition}
 
 \begin{proof}
-	\todo[noline]{Bevises må formateres penere}
+    \todo[noline]{Bevises må formateres penere}
     Axiom 1 follows by construction of the mapping cone.
 
     $\Cone(\id) \simeq 0$, thus we have axiom $2$.
@@ -222,7 +222,7 @@ In our setting of $Kom(\AAA)$ or $D(\AAA)$ an exact triangle is any triangle iso
     Recall 
     \[
 		\Cone(v)^n = Y^{n+1} \oplus \Cone(f)^n = Y^{n+1} \oplus X^{n+1} \oplus Y^n
-	\] 
+    \] 
 	with differential 
     \[
         d^n 
@@ -280,7 +280,7 @@ Next we will see some useful properties of triangulated categories.
             X \ar{u}{id} \ar{r}{id} & X \ar{u}{u} \ar{r} & 0 \ar{r} & \ar{u} TX 
         \end{tikzcd}
    \]
-yields a morphism $0 \to Z$, making the diagram commutative, hence $v \circ u = 0$.
+   yields a morphism $0 \to Z$, making the diagram commutative, hence $v \circ u = 0$.
 \end{proof}
 
 \begin{proposition}[$5$-lemma]
@@ -342,9 +342,9 @@ yields a morphism $0 \to Z$, making the diagram commutative, hence $v \circ u = 
     \]
     We will check that this is exact at $\Hom(A,Y)$, then the general case follows by shifting.
 
-Since $v \circ u = 0$ by \cref{prop:compzero} we have that $\im u^\ast \subset \ker v^\ast$.
+    Since $v \circ u = 0$ by \cref{prop:compzero} we have that $\im u^\ast \subset \ker v^\ast$.
 
-Assume now that $f \in \Hom(A,Y)$ such that $v^\ast(f) = f \circ v = 0$. Thus we have a commutative diagram:
+    Assume now that $f \in \Hom(A,Y)$ such that $v^\ast(f) = f \circ v = 0$. Thus we have a commutative diagram:
     \[
         \begin{tikzcd}
             A  \ar{r}{id} & A \ar{d}{f} \ar{r} & 0 \arrow{d} \ar{r} &  TA \\
